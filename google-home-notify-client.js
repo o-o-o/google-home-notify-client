@@ -9,16 +9,16 @@ class Query {
     this._deviceNames = [];
   }
 
-  static name(deviceName) {
-    return new Query().name(deviceName);
+  static name(...deviceNames) {
+    return new Query().name(deviceNames.reduce((acc, val) => acc.concat(val), []));
+  }
+
+  static ip(...deviceIpAddresses) {
+    return new Query().ip(deviceIpAddresses.reduce((acc, val) => acc.concat(val), []));
   }
 
   static timeout(timeout = 5 * 1000) {
     return new Query().timeout(timeout);
-  }
-
-  static ip(deviceIpAddress) {
-    return new Query().ip(deviceIpAddress);
   }
 
   static async find(callback = () => {}) {
@@ -30,24 +30,13 @@ class Query {
     return this;
   }
 
-  name(deviceName) {
-    if (typeof deviceName === 'string') {
-      this._deviceNames.push(deviceName);
-    } else if (deviceName.forEach) {
-      deviceName.forEach(name => this._deviceNames.push(name));
-    }
+  name(...deviceNames) {
+    deviceNames.reduce((acc, val) => acc.concat(val), []).forEach(name => this._deviceNames.push(name));
     return this;
   }
 
-  ip(deviceIpAddress) {
-    console.log(typeof deviceIpAddress)
-    if (typeof deviceIpAddress === 'string') {
-      console.log('wwww')
-      this._deviceIpAddresses.push(deviceIpAddress);
-    } else if (deviceIpAddress.forEach) {
-      deviceIpAddress.forEach(ip => this._deviceIpAddresses.push(ip));
-    }
-
+  ip(...deviceIpAddresses) {
+    deviceIpAddresses.reduce((acc, val) => acc.concat(val), []).forEach(ip => this._deviceIpAddresses.push(ip));
     return this;
   }
 
@@ -150,14 +139,6 @@ class Device {
 
   get ip() {
     return this._ip;
-  }
-
-  get language() {
-    return this._language;
-  }
-
-  get accent() {
-    return this.accent;
   }
 
   language(language) {

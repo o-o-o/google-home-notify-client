@@ -40,6 +40,9 @@ Query.ip(['192.168.11.1', '192.168.11.2']).find(console.log);
 
 // or
 Query.ip('192.168.11.1').ip('192.168.11.2').find(console.log);
+
+// or
+Query.ip('192.168.11.1', '192.168.11.2').find(console.log);
 ```
 
 #### Device name filtering
@@ -52,6 +55,9 @@ Query.name(['Google Home', 'AQUOS']).find(console.log);
 
 // or
 Query.name('Google Home').name('AQUOS').find(console.log);
+
+// or
+Query.name('Google Home', 'AQUOS').find(console.log);
 ```
 
 #### Promise and timeout

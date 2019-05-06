@@ -4,7 +4,7 @@
   "description": "Send notifications to Google Home",
   "main": "google-home-notify-client.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [
     "google",
@@ -19,5 +19,8 @@
     "castv2-client": "1.2.0",
     "google-tts-api": "0.0.4",
     "multicast-dns": "7.2.0"
+  },
+  "devDependencies": {
+    "jest": "24.8.0"
   }
 }
