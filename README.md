@@ -4,7 +4,7 @@
 
 Send notifications to Google Home
 
-source: https://github.com/o-o-o/google-home-notify-client
+source: https://github.com/o-o-o/google-home-notify-client  
 npm: https://www.npmjs.com/package/google-home-notify-client
 
 
