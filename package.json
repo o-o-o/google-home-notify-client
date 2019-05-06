@@ -1,0 +1,23 @@
+{
+  "name": "ggoogle-home-notify-client",
+  "version": "0.1.0",
+  "description": "Send notifications to Google Home",
+  "main": "google-home-notify-client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "google",
+    "google home",
+    "notify",
+    "texttospeech"
+  ],
+  "author": "Jun Enomoto",
+  "license": "MIT",
+  "repository": "https://github.com/o-o-o/google-home-notify-client.git",
+  "dependencies": {
+    "castv2-client": "1.2.0",
+    "google-tts-api": "0.0.4",
+    "multicast-dns": "7.2.0"
+  }
+}
