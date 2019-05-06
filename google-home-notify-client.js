@@ -81,16 +81,18 @@ class Query {
 }
 
 class Device {
-  constructor(ip, name = ip, language = 'en', accent = 'en') {
+  constructor(ip, name = ip, language = 'en', accent = 'en', speechSpeed = 1, speechTimeout = 10 * 1000) {
     this._ip = ip;
     this._name = name;
     this._language = language;
     this._accent = accent;
+    this._speechSpeed = speechSpeed; // 0.24 = slow
+    this._speechTimeout = speechTimeout;
   }
 
   async notify(message, callback = () => {}) {
     try {
-      const url = await googletts(message, this._language, 1, 1000, this._accent);
+      const url = await googletts(message, this._language, this._speechSpeed, this._speechTimeout, this._accent);
       return this.play(url, callback);
     } catch (error) {
       reject(error);
@@ -110,7 +112,7 @@ class Device {
           player.load({
             contentId: url,
             contentType: 'audio/mp3',
-            streamType: 'BUFFERED' // or LIVE
+            streamType: 'BUFFERED'
           }, {
             autoplay: true
           }, (error, status) => {
@@ -149,6 +151,14 @@ class Device {
   accent(accent) {
     this._accent = accent;
     return this;
+  }
+
+  speechSpeed(speechSpeed) {
+    this._speechSpeed = speechSpeed;
+  }
+
+  speechTimeout(speechTimeout) {
+    this._speechTimeout = speechTimeout;
   }
 }
 
