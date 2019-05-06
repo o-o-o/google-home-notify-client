@@ -1,6 +1,6 @@
 # Google Home Notify Client
 
-[![Build Status](https://travis-ci.org/o-o-o/google-home-notify-client.svg?branch=master)](https://travis-ci.org/o-o-o/google-home-notify-client) [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+[![GitHub version](https://badge.fury.io/gh/o-o-o%2Fgoogle-home-notify-client.svg)](https://badge.fury.io/gh/o-o-o%2Fgoogle-home-notify-client) [![Build Status](https://travis-ci.org/o-o-o/google-home-notify-client.svg?branch=master)](https://travis-ci.org/o-o-o/google-home-notify-client) [![npm version](https://badge.fury.io/js/google-home-notify-client.svg)](https://badge.fury.io/js/google-home-notify-client) [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 
 
 Send notifications to Google Home
