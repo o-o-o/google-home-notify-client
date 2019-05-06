@@ -81,6 +81,8 @@ const device = new Device('192.168.11.1', 'My Google Home');
 
 // language and accent
 const device = new Device('192.168.11.1', 'My Google Home', 'ja', 'ja');
+// language and accent and speechSpeec and speechTimeout
+const device = new Device('192.168.11.1', 'My Google Home', 'ja', 'ja', 1, 10 * 1000);
 ```
 
 #### Notify (message)
@@ -90,6 +92,8 @@ device.notify('Hello World.');
 
 // language and accent
 device.language('ja').accent('ja').notify('こんにちは、世界。');
+// speech speed (0.24 = slow), speech timeout
+device.speechSpeed(0.24).speechTimeout(10 * 1000).notify('Slow Slow Slow.');
 
 // use callback
 device.notify('Hello World.', (error) => {

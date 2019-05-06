@@ -95,7 +95,7 @@ class Device {
       const url = await googletts(message, this._language, this._speechSpeed, this._speechTimeout, this._accent);
       return this.play(url, callback);
     } catch (error) {
-      reject(error);
+      throw error;
     }
   }
 
@@ -155,10 +155,12 @@ class Device {
 
   speechSpeed(speechSpeed) {
     this._speechSpeed = speechSpeed;
+    return this;
   }
 
   speechTimeout(speechTimeout) {
     this._speechTimeout = speechTimeout;
+    return this;
   }
 }
 
