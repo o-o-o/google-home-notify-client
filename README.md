@@ -1,5 +1,8 @@
 # Google Home Notify Client
 
+[![Build Status](https://travis-ci.org/o-o-o/google-home-notify-client.svg?branch=master)](https://travis-ci.org/o-o-o/google-home-notify-client) [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
+
+
 Send notifications to Google Home
 
 ## Installation
