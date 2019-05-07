@@ -2,7 +2,7 @@ const multicastDns = require('multicast-dns');
 const googletts = require('google-tts-api');
 const castv2Cleint = require('castv2-client');
 
-class Query {
+class Scanner {
   constructor() {
     this._deviceIpAddresses = [];
     this._timeout = 5 * 1000;
@@ -10,19 +10,19 @@ class Query {
   }
 
   static name(...deviceNames) {
-    return new Query().name(deviceNames.reduce((acc, val) => acc.concat(val), []));
+    return new Scanner().name(deviceNames.reduce((acc, val) => acc.concat(val), []));
   }
 
   static ip(...deviceIpAddresses) {
-    return new Query().ip(deviceIpAddresses.reduce((acc, val) => acc.concat(val), []));
+    return new Scanner().ip(deviceIpAddresses.reduce((acc, val) => acc.concat(val), []));
   }
 
   static timeout(timeout = 5 * 1000) {
-    return new Query().timeout(timeout);
+    return new Scanner().timeout(timeout);
   }
 
-  static async find(callback = () => {}) {
-    return new Query().find(callback);
+  static async scan(callback = () => {}) {
+    return new Scanner().scan(callback);
   }
 
   timeout(timeout = 5 * 1000) {
@@ -40,7 +40,7 @@ class Query {
     return this;
   }
 
-  async find(callback = () => {}) {
+  async scan(callback = () => {}) {
     return new Promise((resolve, reject) => {
       const mdns = multicastDns();
       const devices = [];
@@ -165,6 +165,6 @@ class Device {
 }
 
 module.exports = {
-  Query,
+  Scanner,
   Device
 };

@@ -17,59 +17,58 @@ npm install google-home-notify-client
 ## Usage
 
 ```javascript
-const { Query } = require('google-home-notify-client');
-Query.find(device => {
+const { Scanner } = require('google-home-notify-client');
+Scanner.name('Google Home').scan(device => {
   device.notify('Hello world.');
 });
 ```
 
-
-### Query (find device)
+### Scanner (Scan local network)
 
 ```javascript
-const { Query } = require('google-home-notify-client');
+const { Scanner } = require('google-home-notify-client');
 
-Query.find(console.log);
+Scanner.scan(console.log);
 
 // or
-const query = new Query();
-query.find(console.log);
+const scanner = new Scanner();
+scanner.scan(console.log);
 ```
 
 #### IP address filtering
 
 ```javascript
-Query.ip('192.168.11.1').find(console.log);
+Scanner.ip('192.168.11.1').scan(console.log);
 
 // or
-Query.ip(['192.168.11.1', '192.168.11.2']).find(console.log);
+Scanner.ip(['192.168.11.1', '192.168.11.2']).scan(console.log);
 
 // or
-Query.ip('192.168.11.1').ip('192.168.11.2').find(console.log);
+Scanner.ip('192.168.11.1').ip('192.168.11.2').scan(console.log);
 
 // or
-Query.ip('192.168.11.1', '192.168.11.2').find(console.log);
+Scanner.ip('192.168.11.1', '192.168.11.2').scan(console.log);
 ```
 
 #### Device name filtering
 
 ```javascript
-Query.name('Google Home').find(console.log);
+Scanner.name('Google Home').scan(console.log);
 
 // or
-Query.name(['Google Home', 'AQUOS']).find(console.log);
+Scanner.name(['Google Home', 'AQUOS']).scan(console.log);
 
 // or
-Query.name('Google Home').name('AQUOS').find(console.log);
+Scanner.name('Google Home').name('AQUOS').scan(console.log);
 
 // or
-Query.name('Google Home', 'AQUOS').find(console.log);
+Scanner.name('Google Home', 'AQUOS').scan(console.log);
 ```
 
 #### Promise and timeout
 
 ```javascript
-const devices = await Query.timeout(10 * 1000).find();
+const devices = await Scanner.timeout(10 * 1000).scan();
 devices.forEach(console.log);
 ```
 

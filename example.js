@@ -1,9 +1,9 @@
-const {Query, Device} = require('./google-home-notify-client');
+const {Scanner, Device} = require('./google-home-notify-client');
 
 async function main() {
   try {
-    console.log('find devices... (timeout = 5sec)');
-    const devices = await Query.timeout(5 * 1000).find();
+    console.log('scan devices... (timeout = 5sec)');
+    const devices = await Scanner.timeout(5 * 1000).scan();
     console.log(`devices = ${devices.map(device => device.name)}`);
     devices.forEach(device => {
       console.log(`notify (device = ${device.name})`);
@@ -15,42 +15,42 @@ async function main() {
 }
 main();
 
-function find() {
-  new Query().find(console.log);
+function scan() {
+  new Scanner().scan(console.log);
 
   // or
-  // Query.find(console.log);
+  // Scanner.scan(console.log);
 }
-// find();
+// scan();
 
 function ipFiltering() {
-  Query.ip('192.168.11.106').find(console.log);
+  Scanner.ip('192.168.11.106').scan(console.log);
 
   // any
-  // Query.ip('192.168.11.106').ip('192.168.11.109').find(console.log);
+  // Scanner.ip('192.168.11.106').ip('192.168.11.109').scan(console.log);
   // or
-  // Query.ip(['192.168.11.106', '192.168.11.109']).find(console.log);
+  // Scanner.ip(['192.168.11.106', '192.168.11.109']).scan(console.log);
 }
 // ipFiltering();
 
 function deviceNameFiltering() {
-  Query.name('Google Home Mini').find(console.log);
+  Scanner.name('Google Home Mini').scan(console.log);
 
   // any
-  // Query.name('Google Home').name('AQUOS').find(console.log);
+  // Scanner.name('Google Home').name('AQUOS').scan(console.log);
   // or
-  // Query.name(['Google Home', 'AQUOS']).find(console.log);
+  // Scanner.name(['Google Home', 'AQUOS']).scan(console.log);
 }
 // deviceNameFiltering();
 
 async function promiseAndTimeout() {
-  const devices = await Query.timeout(10 * 1000).find();
+  const devices = await Scanner.timeout(10 * 1000).scan();
   console.log(devices);
 }
 // promiseAndTimeout();
 
 function notify() {
-  Query.name('Google Home').find(device => {
+  Scanner.name('Google Home').scan(device => {
     device.notify('Hello World.');
     // or
     // device.language('ja').accent('ja').notify('こんにちは、世界。');
@@ -59,7 +59,7 @@ function notify() {
 // notify();
 
 function play() {
-  Query.name('Google Home').find(device => {
+  Scanner.name('Google Home').scan(device => {
     // mp3 url
     device.play('https://dls.nhk-sc.or.jp/products/detail/290/sampledownload');
   });
