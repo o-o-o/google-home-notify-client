@@ -1,6 +1,6 @@
 {
   "name": "google-home-notify-client",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Send notifications to Google Home",
   "main": "google-home-notify-client.js",
   "scripts": {
